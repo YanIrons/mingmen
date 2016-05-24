@@ -36,14 +36,25 @@
                            </div>
                            
                            <div class="form-group">
-                               <label>信息介绍栏</label>
-                               <script id="editor" name="r_msg" type="text/plain" style="width:auto;height:500px;">{$res}</script>
+                               <label>优秀婚庆公司简介</label>
+                               <input name="rintro" value="{$info.rintro}" placeholder="请输入优秀婚庆公司简介" class="form-control">
+                           </div> 
+
+                           <div class="form-group">
+                               <label>优秀婚庆公司地址</label>
+                               <input name="raddress" value="{$info.raddress}" placeholder="请输入优秀婚庆公司地址" class="form-control">
                            </div>
 
-                           <!-- <div class="form-group">
-                               <label>优秀婚庆信息介绍</label>
-                               <textarea name="r_msg" rows="3" value="{$info.r_msg}" placeholder="请输入优秀婚庆信息的介绍" class="form-control">{$info.r_msg};</textarea>
-                           </div> -->
+                           <div class="form-group">
+                               <label>优秀婚庆公司联系电话</label>
+                               <input name="rphone" value="{$info.rphone}" placeholder="请输入优秀婚庆公司的联系电话" class="form-control">
+                           </div>
+
+                           <div class="form-group">
+                               <label>信息介绍栏</label>
+                               <script id="editor" name="r_msg" type="text/plain" style="width:1080px;height:500px;">{$res}</script>
+                           </div>
+
                            <button class="btn btn-warning" type="reset">重置</button>
                            <button class="btn btn-info" type="submit">提交</button>
                        </form>

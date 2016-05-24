@@ -292,6 +292,20 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                        <!--简历信息管理-->
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 简历信息管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo U('Admin/Resume/index');?>">简历信息列表</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo U('Admin/Resume/add');?>">添加新简历信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         
                         <!--社区-优秀婚庆推荐信息管理-->
                         <li>
@@ -356,6 +370,26 @@
                                <input name="r_title" placeholder="请输入要介绍优秀婚庆单位的标题" class="form-control">
                            </div>
 
+                          <!--  <div class="form-group">
+                               <label>公司简介</label>
+                               <input name="rintro" placeholder="请输入要介绍优秀婚庆公司的简介" class="form-control">
+                           </div>
+ -->
+                           <div class="form-group">
+                               <label>公司地址</label>
+                               <input name="raddress" placeholder="请输入要介绍优秀婚庆公司的地址" class="form-control">
+                           </div>
+
+                           <div class="form-group">
+                               <label>公司联系电话</label>
+                               <input name="rphone" placeholder="请输入要介绍优秀婚庆公司的联系电话" class="form-control">
+                           </div>
+
+                           <div class="form-group">
+                               <label>公司简介</label>
+                               <input name="rintro" placeholder="请输入要介绍优秀婚庆公司的简介" class="form-control">
+                           </div>
+
                            <div class="form-group">
                                <label>标题图片栏</label>
                                <input name="r_pic" type="file">
@@ -363,7 +397,7 @@
 
                            <div class="form-group">
                                <label>信息介绍栏</label>
-                               <script id="editor" name="r_msg" type="text/plain" style="width:auto;height:500px;">
+                               <script id="editor" name="r_msg" type="text/plain" style="width:1080px;height:500px;">
                                </script>
                            </div>
                            <button class="btn btn-warning" type="reset">重置</button>

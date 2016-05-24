@@ -18,6 +18,12 @@ class ResumeController extends Controller {
 			$where = '';
 		}
 
+		//查询满足要求的总记录数
+		$count = $resume->where($where)->count();
+		//实例化分页类 传入中记录数和每页显示的记录数
+		$Page = new \Think\Page($count,$num);
+		//获取limit参数
+		$limit = $Page->firstRow.','.$Page->listRows;
 		//查询
 		// $resumes = $resume->where($where)->limit($limit)->select();
 		// 
@@ -32,24 +38,7 @@ class ResumeController extends Controller {
  			$work = $v['work'];
  			$wid = $v['id'];
  			$resume -> query("update hs_resume set resume_work = '$work' where resume_wid = $wid");
- 		}
- 		// die();		
- 		// var_dump($resume);
- 		// echo $resume->_sql();die;
- 		// var_dump($resumes);
- 		// die;
-
-
-		
-		// echo $sql ="select * from hs_job,hs_resume where hs_job.id = hs_resume.resume_wid and $where limit = ".$limit."";
-		// die;
-		//查询满足要求的总记录数
-		$count = $resume->where($where)->count();
-		//实例化分页类 传入中记录数和每页显示的记录数
-		$Page = new \Think\Page($count,$num);
-		//获取limit参数
-		$limit = $Page->firstRow.','.$Page->listRows;
-
+ 		}		
 		
 		//分页显示输出
 		$pages = $Page->show();
@@ -137,13 +126,37 @@ class ResumeController extends Controller {
 		//创建数据表对象
 		$resume = M('resume');
 
-		//获取上传时间
-		$_POST['restime'] = date('Y/m/d H:i:s');
+		//处理图片
+        if($_FILES['resume_pic']['error'] == 0){
+            $upload = new \Think\Upload();// 实例化上传类    
+            $upload->maxSize   =     3145728 ;// 设置附件上传大小    
+            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型    
+            $upload->rootPath  =       './Public';
+            $upload->savePath  =      '/Uploads/'; // 设置附件上传目录   
+            // 上传文件     
+            $info   =   $upload->upload();    
+            if(!$info) {// 上传错误提示错误信息       
+                $this->error($upload->getError());    
+            }else{// 上传成功        
+                // $this->success('上传成功！'); 
+                $str =  ltrim($upload->rootPath,'.').$info['resume_pic']['savepath'].$info['resume_pic']['savename'];
+                $_POST['resume_pic'] = $str;
+            }
+
+            //获取原来图片的;路径
+            $res = $resume->find($_POST['id']);
+            $resume_pic = $res['resume_pic'];
+            // var_dump($resume_pic);
+            //删除图片
+            unlink('.'.$pic);
+        }
+
 
 		//创建数据
 		$res = $resume->create();
 		//执行修改
 		$res = $resume->save();
+		// echo $resume->_sql();die;
 		//执行添加
 		if ($res) {
 			//设置成功后跳转页面地址
@@ -162,9 +175,9 @@ class ResumeController extends Controller {
         $id = $_GET['id'];
         //执行删除
         $res = $resume->delete($id);
-        echo $id;die;
+        // echo $id;die;
 
-        echo $resume->_sql();die;
+        // echo $resume->_sql();die;
 
 
         // 向ajax返回数据

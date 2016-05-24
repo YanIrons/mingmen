@@ -292,6 +292,20 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                        <!--简历信息管理-->
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 简历信息管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo U('Admin/Resume/index');?>">简历信息列表</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo U('Admin/Resume/add');?>">添加新简历信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         
                         <!--社区-优秀婚庆推荐信息管理-->
                         <li>
@@ -364,14 +378,25 @@
                            </div>
                            
                            <div class="form-group">
-                               <label>信息介绍栏</label>
-                               <script id="editor" name="r_msg" type="text/plain" style="width:auto;height:500px;"><?php echo ($res); ?></script>
+                               <label>优秀婚庆公司简介</label>
+                               <input name="rintro" value="<?php echo ($info["rintro"]); ?>" placeholder="请输入优秀婚庆公司简介" class="form-control">
+                           </div> 
+
+                           <div class="form-group">
+                               <label>优秀婚庆公司地址</label>
+                               <input name="raddress" value="<?php echo ($info["raddress"]); ?>" placeholder="请输入优秀婚庆公司地址" class="form-control">
                            </div>
 
-                           <!-- <div class="form-group">
-                               <label>优秀婚庆信息介绍</label>
-                               <textarea name="r_msg" rows="3" value="<?php echo ($info["r_msg"]); ?>" placeholder="请输入优秀婚庆信息的介绍" class="form-control"><?php echo ($info["r_msg"]); ?>;</textarea>
-                           </div> -->
+                           <div class="form-group">
+                               <label>优秀婚庆公司联系电话</label>
+                               <input name="rphone" value="<?php echo ($info["rphone"]); ?>" placeholder="请输入优秀婚庆公司的联系电话" class="form-control">
+                           </div>
+
+                           <div class="form-group">
+                               <label>信息介绍栏</label>
+                               <script id="editor" name="r_msg" type="text/plain" style="width:1080px;height:500px;"><?php echo ($res); ?></script>
+                           </div>
+
                            <button class="btn btn-warning" type="reset">重置</button>
                            <button class="btn btn-info" type="submit">提交</button>
                        </form>

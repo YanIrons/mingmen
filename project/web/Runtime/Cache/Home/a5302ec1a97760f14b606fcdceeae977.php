@@ -28,6 +28,36 @@
 <link href="/Public/Home/jqq/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/Public/Home/jqq/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/Public/Home/jqq/js/lrtk.js"></script>
+<!--js轮播-->
+<link href="/Public/Home/jlb/css/style.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="/Public/Home/jlb/css/skitter.css" media="all" rel="stylesheet" />
+
+<script type="text/javascript" src="/Public/Home/jlb/js/jquery-1.6.4.min.js" ></script>
+<script type="text/javascript" src="/Public/Home/jlb/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/Public/Home/jlb/js/jquery.skitter.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$(document).ready(function() {
+		$(".box_skitter_large").skitter({
+			animation: "random",
+			interval: 3000,
+			numbers: false, 
+			numbers_align: "right", 
+			hideTools: true,
+			controls: false,
+			focus: false,
+			focus_position: true,
+			width_label:'340px', 
+			enable_navigation_keys: true,   
+			progressbar: false
+		});
+	});				  
+					 
+});
+</script>
+
+
 </head>
 <body class="am-with-topbar-fixed-top">
 <script type="text/javascript" src="/Public/Home/Scripts/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/Public/Home/Scripts/jquery.json.js"></script><script type="text/javascript" src="/Public/Home/Scripts/transport_jquery.js"></script><script type="text/javascript" src="/Public/Home/Scripts/utils.js"></script> 
@@ -68,6 +98,7 @@ catch (e) {
   }
 }
 </script>
+
 
 <div class="container-fluid ">
 
@@ -217,6 +248,10 @@ ul, ol, dl { list-style: none; }
 ._citys1 a:hover { color: #fff; background-color: #56b4f8; }
 .AreaS { background-color: #56b4f8 !important; color: #fff !important; }
 </style>
+<style type="text/css">
+    .cur{border:solid 1px green;}
+    .error{border:solid 1px red;}
+  </style>
   <div class="row">
    <div class="col-lg-12" style="margin-top:20px;" style="background-color:#e8ded2;">
        <div class="panel panel-default" style="width:80%;margin-left:10%;" style="background-color:#e8ded2;">
@@ -246,29 +281,29 @@ ul, ol, dl { list-style: none; }
                                    <input type="radio" value="2" id="optionsRadiosInline3" name="resume_sex">保密
                                </label>
                            </div>
-							<!--js年月日选择-->
+							             <!--js年月日选择-->
                             <div class="form-group">
                                <label> 出生年月日 :</label><br><br>
                                <div class="form-group" style="width:100%;height:70px;">
                                	  <p class="datep"><input class="datainp form-control" id="datebut" type="text" placeholder="  请选择" name="resume_birth" readonly>
                                	  <input type="button" class="btn-sm btn-info" onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD '})" value="打开"></p>
-								</div>
-								<script type="text/javascript">
-								    jeDate({
-										dateCell:"#dateinfo",
-										format:"YYYY年MM月DD日",
-										isinitVal:true,
-										isTime:true, //isClear:false,
-										minDate:"2014-09-19 ",
-										okfun:function(val){alert(val)}
-									})
-								</script>
+              								</div>
+              								<script type="text/javascript">
+              								    jeDate({
+              										dateCell:"#dateinfo",
+              										format:"YYYY年MM月DD日",
+              										isinitVal:true,
+              										isTime:true, //isClear:false,
+              										minDate:"2014-09-19 ",
+              										okfun:function(val){alert(val)}
+              									})
+              								</script>
                            </div>
                            <!--js城市选择-->
                            <div class="form-group">
                                <label> 所在城市 :</label><br><br>
                                <div class="form-group" style="width:100%;height:35px;">
-                               	<input type="text" id="city" name="resume_address" placeholder="点此选择所在城市" class="form-control" />
+                               	<input type="text" id="city" name="resume_address" placeholder="点此选择所在城市" class="form-control" readonly />
                                </div>
 
                                <script type="text/javascript">
@@ -278,7 +313,7 @@ ul, ol, dl { list-style: none; }
                                </script>
                            </div>
 							
-							<div class="form-group">
+							           <div class="form-group">
                                <label> 上传照片 :</label><br><br>
                                <input type="file" name="resume_pic" class="form-control">
                            </div>
@@ -286,7 +321,7 @@ ul, ol, dl { list-style: none; }
 
                            <div class="form-group">
                                <label> 手机号 :</label><br><br>
-                               <input type="text" name="resume_phone" placeholder="请输入手机号" class="form-control">
+                               <input type="text" id="phone" name="resume_phone" placeholder="请输入11位手机号" class="form-control">
                            </div>
 						
                            <div class="form-group">
@@ -302,6 +337,70 @@ ul, ol, dl { list-style: none; }
 
                            <button class="btn-sm btn-warning" type="reset">重置</button>
                            <button class="btn-sm btn-info" type="submit">提交</button>
+                           <!--验证提交内容-->
+                            <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+                            <script type="text/javascript">
+                            //声明全局变量
+                            var CUSER= true;
+                              //绑定表单提交事件
+                              $('form').submit(function(){
+                                CUSER = true;
+                                //丧失焦点事件
+                                $('input').trigger('blur');
+                                //检验是否正确
+                                if(!CUSER){
+                                  return false;
+                                }
+                                //阻止默认行为
+                                return  true;
+                              })
+
+                              //绑定获取焦点事件,显示提示信息
+                              $('input.phone').focus(function(){
+                                //获取属性
+                                var str = $(this).attr('readmin');
+                                //设置文本
+                                $(this).next().html(str).css('color','green');
+                                //设置样式
+                                $(this).attr('class','cur').attr('class','form-control');
+
+                              })
+
+                              //邮箱
+                              $('input[name=resume_email]').blur(function(){
+                                var email = $(this).val();
+                                var reg = /^\w+@\w+\.(com|cn|org|com.cn|net)$/;
+                                if(reg.test(email)){
+                                  $(this).next().html('√').css('color','green');
+                                  //设置样式
+                                  $(this).attr('class','cur').attr('class','resume_email');
+                                }else{
+                                  $(this).next().html('邮箱格式不正确').css('color','red');
+                                  //设置样式
+                                  $(this).addClass('error');
+                                  CUSER = false;
+
+                                }
+                              })
+
+                              //手机号
+                              $('input[name=resume_phone]').blur(function(){
+                                var email = $(this).val();
+                                var reg = /^1\d{10}$/;
+                                if(reg.test(email)){
+                                  $(this).next().html('√').css('color','green');
+                                  //设置样式
+                                  $(this).attr('class','cur').attr('class','form-control');
+                                }else{
+                                  $(this).next().html('手机格式不正确').css('color','red');
+                                  //设置样式
+                                  $(this).addClass('error');
+                                  CUSER = false;
+                                }
+                              })
+
+
+                            </script>
                        </form>
                    </div>
              <!--   http://localhost/Class/s43/project/index.php/Admin/User/add.html
@@ -392,12 +491,12 @@ ul, ol, dl { list-style: none; }
    </ul>
   </div>
 </div>
-<div class="am-g am-cf am-margin-0">
+<div class="am-g am-cf am-margin-0" style="background-color:#d4d2d3;">
   <div class="am-container am-padding-sm ">
     <div class="am-u-sm-12 am-u-md-2 am-text-center"><p style="line-height:40px; font-size:20px; font-weight:700; color:#B9B9B9; "><img src="/Public/Home/Picture/400.png" style="vertical-align:middle; margin-top:-6px; ">4008297758</p></div>
     <div class="am-u-sm-12 am-u-md-7 am-text-center"><p class="am-text-sm"> 版权所有 2010-2014 名门新娘 名门新娘官方旗舰店<br> 并保留所有权利 ICP备案证书号：浙ICP备12016981号 </p></div>
     <div class="am-u-sm-12 am-u-md-3 am-text-center"><p> <span style="display:inline-block; vertical-align:bottom;"><wb:follow-button height="24" width="67" type="red_1" uid="2991975565"></wb:follow-button></span><img style="margin-left:20px;" src="/Public/Home/Picture/sm_83x30.png"> </p></div>
-</div>
+	</div>
 </div>
 </body>
 </html>

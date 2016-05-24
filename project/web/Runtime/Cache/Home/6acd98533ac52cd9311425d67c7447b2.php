@@ -28,6 +28,36 @@
 <link href="/Public/Home/jqq/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/Public/Home/jqq/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/Public/Home/jqq/js/lrtk.js"></script>
+<!--js轮播-->
+<link href="/Public/Home/jlb/css/style.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="/Public/Home/jlb/css/skitter.css" media="all" rel="stylesheet" />
+
+<script type="text/javascript" src="/Public/Home/jlb/js/jquery-1.6.4.min.js" ></script>
+<script type="text/javascript" src="/Public/Home/jlb/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/Public/Home/jlb/js/jquery.skitter.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$(document).ready(function() {
+		$(".box_skitter_large").skitter({
+			animation: "random",
+			interval: 3000,
+			numbers: false, 
+			numbers_align: "right", 
+			hideTools: true,
+			controls: false,
+			focus: false,
+			focus_position: true,
+			width_label:'340px', 
+			enable_navigation_keys: true,   
+			progressbar: false
+		});
+	});				  
+					 
+});
+</script>
+
+
 </head>
 <body class="am-with-topbar-fixed-top">
 <script type="text/javascript" src="/Public/Home/Scripts/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/Public/Home/Scripts/jquery.json.js"></script><script type="text/javascript" src="/Public/Home/Scripts/transport_jquery.js"></script><script type="text/javascript" src="/Public/Home/Scripts/utils.js"></script> 
@@ -68,6 +98,7 @@ catch (e) {
   }
 }
 </script>
+
 
 <div class="container-fluid ">
 
@@ -411,12 +442,12 @@ $(document).ready(function(){
    </ul>
   </div>
 </div>
-<div class="am-g am-cf am-margin-0">
+<div class="am-g am-cf am-margin-0" style="background-color:#d4d2d3;">
   <div class="am-container am-padding-sm ">
     <div class="am-u-sm-12 am-u-md-2 am-text-center"><p style="line-height:40px; font-size:20px; font-weight:700; color:#B9B9B9; "><img src="/Public/Home/Picture/400.png" style="vertical-align:middle; margin-top:-6px; ">4008297758</p></div>
     <div class="am-u-sm-12 am-u-md-7 am-text-center"><p class="am-text-sm"> 版权所有 2010-2014 名门新娘 名门新娘官方旗舰店<br> 并保留所有权利 ICP备案证书号：浙ICP备12016981号 </p></div>
     <div class="am-u-sm-12 am-u-md-3 am-text-center"><p> <span style="display:inline-block; vertical-align:bottom;"><wb:follow-button height="24" width="67" type="red_1" uid="2991975565"></wb:follow-button></span><img style="margin-left:20px;" src="/Public/Home/Picture/sm_83x30.png"> </p></div>
-</div>
+	</div>
 </div>
 </body>
 </html>

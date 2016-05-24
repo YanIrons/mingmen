@@ -292,6 +292,20 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                        <!--简历信息管理-->
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 简历信息管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo U('Admin/Resume/index');?>">简历信息列表</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo U('Admin/Resume/add');?>">添加新简历信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         
                         <!--社区-优秀婚庆推荐信息管理-->
                         <li>

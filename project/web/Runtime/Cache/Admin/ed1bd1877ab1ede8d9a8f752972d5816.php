@@ -386,41 +386,45 @@
                   </form>
 
                 </div>
-                <div class="row">
+                <!--循环遍历-->
+              <?php if(is_array($recommends)): foreach($recommends as $k=>$vo): ?><div class="row">
                   <div class="col-sm-12">
                   <!-- 用户列表遍历 -->
                     <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dataTables-example_info">
                       <thead>
                         <tr role="row">
-                          <th rowspan="1" colspan="1" style="width:30px;">ID</th>
-                          <th rowspan="1" colspan="1" style="width:60px;">创建时间</th>
-                          <th rowspan="1" colspan="1" style="width:100px;">标题栏</th>
-                          <th rowspan="1" colspan="1" style="width:100px;">标题图片栏</th>
-                          <th rowspan="1" colspan="1" style="width:200px;">推荐信息栏</th>
-                          <th rowspan="1" colspan="1" style="width:60px;">操作</th>
+                          <th class="col-md-1">ID</th>
+                          <th class="col-md-2">创建时间</th>
+                          <th class="col-md-2">标题栏</th>
+                          <th class="col-md-2">标题图片栏</th>
+                          <th class="col-md-2">简介</th>
+                          <th class="col-md-2">操作</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php if(is_array($recommends)): foreach($recommends as $k=>$vo): ?><tr class="gradeA odd" role="row">
+                          <tr class="gradeA odd" role="row">
                             <td class="sid"><?php echo ($vo["id"]); ?></td>
                             <td><?php echo ($vo["rtime"]); ?></td>
                             <td class="edit"><?php echo ($vo["r_title"]); ?></td>
                             <td>
                               <img src="<?php echo ($vo["r_pic"]); ?>" width="100px">
                             </td>
-                            <td class="editm"><?php echo htmlspecialchars_decode($vo['r_msg']); ?></td>
+                            <td class="edit"><?php echo ($vo["rintro"]); ?></td>
                             <!-- <td class="editm">
                               <div>
                                <script id="editor" name="r_msg" type="text/plain" style="width:500;height:200px;"><?php echo htmlspecialchars_decode($vo['r_msg']); ?></script>
                               </div>
                            </td> -->
                             <td class="center">
-                              <button class="btn btn-danger btn-del " type="button"><i class="fa fa-times">&nbsp;删除&nbsp;</i></button><br><br>    
-                              <a href="<?php echo U('Admin/Recommend/save',array('id'=>$vo['id']));?>" class="btn btn-primary " type="button"><i class="fa fa-list">&nbsp;编辑&nbsp;</i></a>
+                              <button class="btn-xs btn-danger btn-del " type="button"><i class="fa fa-times">&nbsp;&nbsp;删除&nbsp;&nbsp;</i></button><br><br>    
+                              <a href="<?php echo U('Admin/Recommend/save',array('id'=>$vo['id']));?>" class="btn-sm btn-primary " type="button"><i class="fa fa-list">&nbsp;编辑&nbsp;</i></a>
                             </td>
-                          </tr><?php endforeach; endif; ?>
+                          </tr>
+                          <tr>
+                            <td class="editm" colspan="10"><?php echo htmlspecialchars_decode($vo['r_msg']); ?></td> 
+                          </tr>
                       </tbody>
-                    </table>
+                    </table><?php endforeach; endif; ?>
                   
                   </div>
                 </div>
@@ -482,7 +486,7 @@
         // console.log(data);
         if(data == 1){
           // alert('成功');
-         btn.parents('tr').remove();
+         btn.parents('table').remove();
         }else{
           alert('失败');
         }

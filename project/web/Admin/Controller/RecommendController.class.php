@@ -61,6 +61,8 @@ class RecommendController extends Controller {
 	public function insert(){
 		//创建表对象
 		$recommend = M('recommend');
+		// $res = $_POST;
+		// var_dump($res);die;
 
 		//获取上传时间
 		$_POST['rtime'] = date('Y/m/d H:i:s');

@@ -421,7 +421,7 @@
                             <td class="edite"><?php echo ($vo["resume_email"]); ?></td>
                             <td class="edita"><?php echo ($vo["resume_address"]); ?></td>
                             <td class="center">
-                              <button class="btn-xs btn-danger btn-del " type="button"><i class="fa fa-times">&nbsp;删除&nbsp;</i></button><br><br>               
+                              <button class="btn-xs btn-danger btn-del " type="button"><i class="fa fa-times">&nbsp;&nbsp;删除&nbsp;&nbsp;</i></button><br><br>               
                               <a href="<?php echo U('Admin/Resume/save',array('id'=>$vo['id']));?>" class="btn-sm btn-primary" type="button"><i class="fa fa-list">&nbsp;编辑&nbsp;</i></a>
                             </td>
                           </tr>
